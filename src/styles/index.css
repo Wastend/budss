@@ -1,0 +1,161 @@
+:root {
+    /*Colors*/
+    --color-black: #181818;
+    --color-black_hover: #272626;
+    --color-orange: #ffaa4c;
+    --color-orange_hover: #f8921d;
+    --color-white: #ffffff;
+    --color-purple: #954ced;
+    --color-purple_hover: #8230e7;
+    --color-turquoise: #2fdbbc;
+}
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('../fonts/Outfit-Thin.woff2');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 22px;
+    font-family: 'Outfit', sans-serif;
+    color: var(--color-white);
+}
+
+h1 {
+    font-size: 6.4rem;
+}
+
+h2 {
+    font-size: 4.8rem;
+}
+
+h3 {
+    font-size: 3.2rem;
+}
+
+h4 {
+    font-size: 2.4rem;
+}
+
+h5 {
+    font-size: 1.8rem;
+}
+
+h6 {
+    font-size: 1.2rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+body {
+    /* background-color: var(--color-black); */
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header__top {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--color-orange);
+    padding: 0 3rem;
+}
+
+.header__button {
+    width: 8.5rem;
+    height: 1.9rem;
+    background-color: var(--color-orange);
+    border-radius: 0.2rem;
+    border: 0;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.header__button:hover{
+    background-color: var(--color-orange_hover);
+}
+
+.header__button.active {
+    border-radius: 1rem 1rem 0 0;
+    background-color: var(--color-black);
+    transition: 0.4s;
+}
+
+.header__button.active:hover {
+    background-color: var(--color-black_hover);
+}
+
+.header__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: var(--color-black);
+    padding: 0 3rem;
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo img {
+    width: 1.5rem;
+    height: 2rem;
+}
+
+.button__contact {
+    width: 9rem;
+    height: 3rem;
+    border-radius: 0.8rem;
+    background-color: var(--color-purple);
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.button__contact:hover {
+    background-color: var(--color-purple_hover);
+    transition: 0.4s;
+}
+
+@media(max-width: 1440px) {
+    * {
+        font-size: 20px;
+    }
+}
+
+@media(max-width: 1024px) {
+    * {
+        font-size: 18px;
+    }
+}
+
+@media(max-width: 768px) {
+    * {
+        font-size: 16px;
+    }
+}
+
+@media(max-width: 425px) {
+    * {
+        font-size: 15px;
+    }
+}
+
+@media(max-width: 375px) {
+    * {
+        font-size: 14px;
+    }
+}
+
+@media(max-width: 320px) {
+    * {
+        font-size: 12px;
+    }
+}
