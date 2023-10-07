@@ -2,6 +2,7 @@
   /*Colors*/
   --color-black: #181818;
   --color-black_hover: #272626;
+  --color-gray: #444444;
   --color-orange: #ffaa4c;
   --color-orange_hover: #f8921d;
   --color-white: #ffffff;
@@ -18,9 +19,12 @@
 * {
   margin: 0;
   padding: 0;
-  font-size: 22px;
   font-family: 'Outfit', sans-serif;
   color: var(--color-white);
+}
+
+html {
+  font-size: 22px;
 }
 
 h1 {
@@ -59,6 +63,10 @@ p {
 a {
   text-decoration: none;
   font-weight: 600;
+}
+
+button {
+  font-size: 1rem;
 }
 
 body {
@@ -250,9 +258,95 @@ main {
   height: 5rem;
 }
 
-.about__advantage__title {}
+.presentation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-top: 5rem;
+}
 
-.about__advantage_description {}
+.presentation__background {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  z-index: 1;
+  gap: 2rem;
+}
+
+.presentation__block {
+  display: flex;
+  width: 300%;
+}
+
+.presentation__block:nth-child(3):hover {
+  animation-play-state: paused;
+}
+
+.presentation__block:nth-child(1),
+.presentation__block:nth-child(3) {
+  animation: move__left 8s infinite linear;
+}
+
+
+.presentation__block:nth-child(2) {
+  animation: move__right 8s infinite linear;
+}
+
+.presentation__text {
+  white-space: nowrap;
+  width: 100%;
+  color: var(--color-black);
+  text-shadow: -1px 1px 0 var(--color-gray),
+    1px 1px 0 var(--color-gray),
+    1px -1px 0 var(--color-gray),
+    -1px -1px 0 var(--color-gray);
+}
+
+.presentation__block:nth-child(1) .presentation__text:nth-child(1),
+.presentation__block:nth-child(1) .presentation__text:nth-child(3){
+  color: var(--color-turquoise);
+}
+
+.presentation__block:nth-child(2) .presentation__text:nth-child(1),
+.presentation__block:nth-child(2) .presentation__text:nth-child(3) {
+  color: var(--color-purple);
+}
+
+.presentation__block:nth-child(3) .presentation__text:nth-child(1),
+.presentation__block:nth-child(3) .presentation__text:nth-child(3) {
+  color: var(--color-orange);
+}
+
+.presentation img {
+  z-index: 2;
+  width: 15.4rem;
+  height: 31.1rem;
+}
+
+@keyframes move__left {
+  from {
+    transform: translate(0);
+  }
+
+  to {
+    transform: translateX(-66.6%);
+  }
+}
+
+@keyframes move__right {
+  from {
+    transform: translate(-66.6%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
+}
 
 @media(min-width: 1920px) {
   main {
@@ -271,13 +365,17 @@ main {
 }
 
 @media(max-width: 1440px) {
-  * {
+  html {
     font-size: 20px;
+  }
+
+  .presentation__block {
+    width: 300%;
   }
 }
 
 @media(max-width: 1024px) {
-  * {
+  html {
     font-size: 18px;
   }
 
@@ -324,10 +422,14 @@ main {
     gap: 2rem;
     margin-right: 2rem;
   }
+
+  .presentation__block {
+    width: 360%;
+  }
 }
 
 @media(max-width: 768px) {
-  * {
+  html {
     font-size: 16px;
   }
 
@@ -375,7 +477,7 @@ main {
     width: calc(100% - 4rem);
     margin: 0 2rem;
   }
-  
+
   .about__advantage {
     max-width: 15rem;
   }
@@ -384,10 +486,20 @@ main {
     width: 2.5rem;
     height: 2.5rem;
   }
+  
+  .presentation__block {
+    width: 490%;
+  }
+}
+
+@media(max-width: 500px) {
+  .presentation__block {
+    width: 600%;
+  }
 }
 
 @media(max-width: 425px) {
-  * {
+  html {
     font-size: 15px;
   }
 
@@ -402,11 +514,13 @@ main {
 }
 
 @media(max-width: 375px) {
-  * {
+  html {
     font-size: 14px;
   }
 
-  h1 {}
+  h1 {
+    font-size: 3.42rem;
+  }
 
   h2 {
     font-size: 2.86rem;
@@ -559,13 +673,25 @@ main {
     width: 90%;
   }
 
-  .about__advantage_description{
+  .about__advantage_description {
     font-size: 1.14rem;
+  }
+
+  .presentation {
+    margin-top: 5.71rem;
+  }
+
+  .presentation__background {
+    gap: 5rem;
+  }
+
+  .presentation__block {
+    width: 330%;
   }
 }
 
 @media(max-width: 320px) {
-  * {
+  html {
     font-size: 12px;
   }
 }
