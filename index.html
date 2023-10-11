@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="./src/images/logo.svg">
   <link rel="stylesheet" href="src/styles/index.css">
   <title>Budss</title>
 </head>
@@ -18,12 +19,12 @@
         For Customers
       </button>
     </section>
-    <section class="header__bottom">
+    <section class="header__bottom" id="header__bottom">
       <div class="logo">
         <img src="./src/images/logo.svg" alt="logo">
         <h5 class="logo__text">budss</h5>
       </div>
-      <button class="button__contact">Contact sales</button>
+      <button name="button__contact" class="button__contact">Contact sales</button>
       <button id="header__bands" class="header__bands">☰</button>
 
     </section>
@@ -31,7 +32,7 @@
   <main>
     <section id="menu" class="menu">
       <button id="menu__button_close" class="menu__button_close">x</button>
-      <button class="button__contact">Contact sales</button>
+      <button name="button__contact" class="button__contact">Contact sales</button>
       <ul class="menu__list">
         <li class="menu__item">
           <a id="menu__link" class="menu__link" href="">For Business</a>
@@ -50,6 +51,49 @@
         </li>
       </ul>
     </section>
+    <section id="window" class="window">
+      <button name="window__close" class="window__close">
+        <img src="./src/images/icons/window_close.png" alt="close">
+      </button>
+      <form class="window__form" id="window__form" action="">
+        <div class="window__block">
+          <label class="window__text required" for="name">Name</label>
+          <input type="text" placeholder="Enter name" id="nameInput" required />
+          <p class="window__error" id="nameError"></p>
+        </div>
+        <div class="window__block">
+          <label class="window__text required" for="email">Email</label>
+          <input type="email" placeholder="Enter email" id="emailInput" required />
+          <p class="window__error" id="emailError"></p>
+        </div>
+        <div class="window__block">
+          <label class="window__text required" for="phone">Phone number</label>
+          <input type="text" placeholder="+79991234567" id="phoneInput" required />
+          <p class="window__error" id="phoneError"></p>
+        </div>
+        <div class="window__block">
+          <label class="window__text" for="name">Company</label>
+          <input type="tel" id="companyInput" placeholder="Enter company" />
+        </div>
+        <div class="window__block">
+          <label class="window__text" for="name">Website/Store URL</label>
+          <input type="text" id="websiteInput" placeholder="Enter Website/Store URL" />
+        </div>
+        <p class="window__terms">
+          By submitting this form you are agreeing to Budss`s
+          <a href="https://en.wikipedia.org/wiki/Privacy_policy" target="_blank">Privacy Policy</a>
+          and
+          <a href="https://sell.amazon.in/standards/terms-of-use" target="_blank">Terms of Use</a>
+        </p>
+        <button type="submit" id="window__button" class="button__contact" disabled>Contact sales</button>
+      </form>
+      <div id="window__positive" class="window__positive">
+        <img src="./src/images/positive.png" alt="positive">
+        <h5 class="window__title">Thank you!</h5>
+        <h6 class="window__description">Thank you, we have received your application and will contact you soon!</h6>
+        <button name="window__close" class="button__contact">Super!</button>
+      </div>
+    </section>
     <section class="start">
       <div class="start__text">
         <h2 class="start__title">Everyone is an Influencer</h2>
@@ -57,7 +101,7 @@
           Budss is a payments as a service and WOM engine dedicated to acquisition and retention of customers
           to your business.
         </p>
-        <button class="button__contact">Contact sales</button>
+        <button name="button__contact" class="button__contact">Contact sales</button>
       </div>
       <img class="start__image" src="./src/images/girl.png" alt="girl">
       </div>
@@ -198,7 +242,7 @@
     <section class="contacts">
       <div class="contacts__invitation">
         <h3 class="contacts__invitation_title">Let Your Business Grow</h3>
-        <button class="button__contact">Contact sales</button>
+        <button name="button__contact" class="button__contact">Contact sales</button>
       </div>
       <div class="contacts__socials">
         <div class="contacts__text">
@@ -259,7 +303,7 @@
         <a href="https://sell.amazon.in/standards/terms-of-use" target="_blank">Terms Of Use - Seller</a>
         <a href="https://www.seller.tools/terms-of-use" target="_blank">Terms of Use - Sellers & Customers</a>
       </div>
-      <button class="button__contact">Contact sales</button>
+      <button name="button__contact" class="button__contact">Contact sales</button>
       <div class="footer__downloads">
         <a href="https://www.apple.com/app-store/" target="_blank">
           <button class="footer__download">
@@ -282,6 +326,19 @@
       </div>
     </section>
   </footer>
+  <div id="cookie" class="cookie show">
+    <p class="cookie__text">This website uses cookies to ensure you get the best experience on our website. They also
+      allow us to analyze user behavior in order to constantly improve the website for you. </p>
+    <div class="cookie__right">
+      <div class="cookie__buttons">
+        <button name="cookie__button">Accept</button>
+        <button name="cookie__button">Decline</button>
+      </div>
+      <button name="cookie__button" class="window__close">
+        <img src="./src/images/icons/window_close.png" alt="close">
+      </button>
+    </div>
+  </div>
   <script src="src/scripts/index.js"> </script>
 </body>
 

@@ -1,6 +1,9 @@
 :root {
   /*Colors*/
+  --color-black_00: #000000;
   --color-black: #181818;
+  --color-black-01: #070707;
+  --color-black-02: #383838;
   --color-black_hover: #272626;
   --color-gray: #444444;
   --color-gray-border: #CFCFCF;
@@ -8,10 +11,13 @@
   --color-orange: #ffaa4c;
   --color-orange_hover: #f8921d;
   --color-white: #ffffff;
+  --color-white-02: #f1f1f1;
+  --color-white-03: #a7a7a7;
   --color-white-dark: #B9B9B9;
   --color-purple: #954ced;
   --color-purple_hover: #8230e7;
   --color-turquoise: #2fdbbc;
+  --color-red: #ec1211;
 }
 
 @font-face {
@@ -75,7 +81,24 @@ button {
 body {
   display: flex;
   flex-direction: column;
+  position: relative;
   background-color: var(--color-black);
+}
+
+body.inactive {
+  overflow: hidden;
+}
+
+body.inactive::before {
+  content: '';
+  position: fixed;
+  z-index: 50;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #00000020;
+  filter: blur(2px);
 }
 
 main {
@@ -88,11 +111,13 @@ main {
 .header {
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 .header__top {
   display: flex;
   flex-direction: row;
+  position: relative;
   background-color: var(--color-orange);
   padding: 0 3rem;
 }
@@ -127,8 +152,14 @@ main {
   flex-direction: row;
   justify-content: space-between;
   background-color: var(--color-black);
-  margin: 0.3rem 0;
   padding: 0 3rem;
+  z-index: 10;
+}
+
+.header__bottom.fixed {
+  position: fixed;
+  width: calc(100% - 6rem);
+  background-color: var(--color-black_hover);
 }
 
 .logo {
@@ -150,12 +181,17 @@ main {
   border: 0;
   font-weight: 600;
   transition: 0.4s;
+  margin: 0.3rem 0;
   cursor: pointer;
 }
 
 .button__contact:hover {
   background-color: var(--color-purple_hover);
   transition: 0.4s;
+}
+
+.button__contact:disabled {
+  background-color: var(--color-white-dark);
 }
 
 .header__bands {
@@ -587,7 +623,7 @@ main {
   width: min-content;
 }
 
-.footer__persons .person__button{
+.footer__persons .person__button {
   background-color: transparent;
 }
 
@@ -600,7 +636,7 @@ main {
   gap: 1rem;
 }
 
-.footer__downloads a{
+.footer__downloads a {
   width: 8rem;
 }
 
@@ -609,7 +645,7 @@ main {
   border: 0;
 }
 
-.footer__download img{
+.footer__download img {
   width: 100%;
   height: 100%;
 }
@@ -638,6 +674,206 @@ main {
   text-decoration: underline;
 }
 
+.window {
+  display: none;
+}
+
+.window.active {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  top: 5%;
+  position: fixed;
+  background-color: var(--color-white);
+  border-radius: 1rem;
+  filter: none;
+  width: 27rem;
+  z-index: 100;
+}
+
+.window__close {
+  align-self: flex-end;
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  margin: 1rem 1rem 0 0;
+  width: 2rem;
+  height: 2rem;
+}
+
+.window__close img {
+  width: 100%;
+}
+
+.window__form {
+  display: none;
+}
+
+.window__form.active {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem 2rem 2rem;
+  gap: 0.5rem;
+}
+
+.window__block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.window__text.required:after {
+  color: red;
+  content: " *";
+}
+
+.window__text {
+  color: var(--color-black-01);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.window__block input {
+  height: 2rem;
+  border-radius: 0.7rem;
+  color: var(--color-black);
+  font-size: 1rem;
+  padding: 0 0.8rem;
+  border: 1px solid var(--color-white-02);
+  outline: none;
+}
+
+.window__block:nth-child(3) input {
+  background: url(../images/icons/russian-federation.png) no-repeat left;
+  background-size: 1rem;
+  background-position-x: 0.8rem;
+  padding: 0 2.6rem;
+}
+
+.window__block input::placeholder {
+  color: var(--color-white-03);
+}
+
+.window__block input:focus-visible {
+  border: 1px solid var(--color-white-03);
+}
+
+.window__block input.error:focus-visible,
+.window__block input.error {
+  border: 1px solid var(--color-red);
+}
+
+.window__error {
+  color: var(--color-red);
+}
+
+.window__terms {
+  color: var(--color-black);
+}
+
+.window__terms a {
+  color: var(--color-purple);
+  text-decoration: underline;
+}
+
+.window__positive {
+  display: none;
+}
+
+.window__positive.active {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2rem 2rem 2rem;
+  gap: 1rem;
+}
+
+.window__positive img {
+  width: 14rem;
+  height: 12rem;
+}
+
+.window__title {
+  color: var(--color-purple);
+  text-align: center;
+}
+
+.window__description {
+  color: var(--color-gray);
+  text-align: center;
+  width: 78%;
+}
+
+.cookie {
+  display: none;
+  z-index: 1000;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 3vh;
+  width: 90%;
+  align-self: center;
+  height: 5.5rem;
+  border-radius: 0.8rem;
+  background-color: var(--color-white);
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.4);
+  padding: 0 1rem;
+  animation: showBottom 1s;
+  gap: 2rem;
+}
+
+.cookie.hide {
+  animation: closeBottom 2s;
+}
+
+.cookie.show {
+  display: flex;
+}
+
+.cookie__text {
+  color: var(--color-black-02);
+  align-self: center;
+  width: 63%;
+}
+
+.cookie__right {
+  display: flex;
+  height: 100%;
+  gap: 1rem;
+}
+
+.cookie__buttons {
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  gap: 1rem;
+}
+
+.cookie__buttons button {
+  width: 6.2rem;
+  height: 3rem;
+  border-radius: 0.8rem;
+  border: 2px solid var(--color-purple);
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cookie__buttons button:nth-child(1) {
+  background-color: var(--color-purple);
+}
+
+.cookie__buttons button:nth-child(2) {
+  background-color: var(--color-white);
+  color: var(--color-black_00);
+}
+
+.cookie .window__close {
+  width: 1.2rem;
+  height: 1.2rem;
+  align-self: flex-start;
+  margin: 0.5rem 0 0 0;
+}
+
 @keyframes move__left {
   from {
     transform: translate(0);
@@ -655,6 +891,26 @@ main {
 
   to {
     transform: translateX(0%);
+  }
+}
+
+@keyframes showBottom {
+  from {
+    transform: translateY(100vh);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes closeBottom {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100vh);
   }
 }
 
@@ -988,7 +1244,7 @@ main {
   .footer {
     width: 95%;
   }
-  
+
   .footer__downloads a {
     width: 6rem;
   }
@@ -1033,6 +1289,10 @@ main {
 
   .header__bottom {
     padding: 1.15rem;
+  }
+
+  .header__bottom.fixed {
+    width: calc(100% - 2.3rem);
   }
 
   .header .button__contact {
@@ -1379,7 +1639,7 @@ main {
     font-weight: 300;
   }
 
-  .footer .button__contact{
+  .footer .button__contact {
     width: 50%;
     height: 3.5rem;
   }
