@@ -1,16 +1,18 @@
-const button__business = document.getElementsByName('button__business')
-const button__customers = document.getElementsByName('button__customers')
+const button__business = document.getElementsByClassName('button__business')
+const button__customers = document.getElementsByClassName('button__customers')
 const header__buttons = [button__business, button__customers]
 
+const start = document.getElementById('start')
+
 const header__button_contact = document.getElementById('header__button_contact')
-const header__buttons_apps = document.getElementById('header__buttons_apps')
+const header__links_apps = document.getElementById('header__links_apps')
 
 const header__bands = document.getElementById('header__bands')
 const menu__button_close = document.getElementById('menu__button_close')
 const menu = document.getElementById('menu')
 const menu__buttons = [header__bands, menu__button_close]
 const menu__button_contact = document.getElementById('menu__button_contact')
-const menu__buttons_apps = document.getElementById('menu__buttons_apps')
+const menu__links_apps = document.getElementById('menu__links_apps')
 
 const buttons__contact = document.getElementsByName('button__contact')
 const form = document.getElementById('window')
@@ -40,20 +42,21 @@ const inputs = {
 const cookie = document.getElementById('cookie')
 const cookie__buttons = document.getElementsByName('cookie__button')
 
-header__buttons.forEach(element => {
-  element.forEach(el => {
+
+header__buttons.forEach(elements => {
+  Array.from(elements).forEach(el => {
     el.addEventListener('click', (e) => {
       e.preventDefault()
-      if (el.getAttribute('name') == 'button__business') {
+      if (el.classList.contains('button__business')) {
         !button__business[0].classList.contains('active') && button__business[0].classList.add('active')
         button__customers[0].classList.remove('active')
         if (window.innerWidth > 375) {
           header__button_contact.classList.remove('invisible')
-          header__buttons_apps.classList.add('invisible')
+          header__links_apps.classList.add('invisible')
         }
         else {
           menu__button_contact.classList.remove('invisible')
-          menu__buttons_apps.classList.add('invisible')
+          menu__links_apps.classList.add('invisible')
         }
       }
       else {
@@ -61,11 +64,11 @@ header__buttons.forEach(element => {
         button__business[0].classList.remove('active')
         if (window.innerWidth > 375) {
           header__button_contact.classList.add('invisible')
-          header__buttons_apps.classList.remove('invisible')
+          header__links_apps.classList.remove('invisible')
         }
         else {
           menu__button_contact.classList.add('invisible')
-          menu__buttons_apps.classList.remove('invisible')
+          menu__links_apps.classList.remove('invisible')
         }
       }
     })
@@ -77,9 +80,11 @@ menu__buttons.forEach(element => {
   element.addEventListener('click', (e) => {
     e.preventDefault()
     if (menu.classList.contains('active')) {
+      document.body.classList.remove('inactive')
       menu.classList.remove('active')
       header__bottom.style.display = 'flex'
     } else {
+      document.body.classList.add('inactive')
       menu.classList.add('active')
       header__bottom.style.display = 'none'
     }
@@ -129,10 +134,18 @@ buttons__close.forEach(element => {
 })
 
 document.addEventListener('scroll', function () {
-  if (window.scrollY > 40)
+  if (
+    (window.innerWidth > 768 && window.scrollY > 40) ||
+    (window.innerWidth > 375 && window.scrollY > 30) ||
+    (window.innerWidth > 320 && window.scrollY > 26)
+  ) {
     header__bottom.classList.add('fixed')
-  else
+    start.style.marginTop = window.innerWidth >375 ? '3.8rem' : '5rem'
+  }
+  else {
     header__bottom.classList.remove('fixed')
+    start.style.marginTop = '0'
+  }
 })
 
 
@@ -155,4 +168,14 @@ cookie__buttons.forEach(element => {
     cookie.classList.add('hide')
     setTimeout(() => { cookie.classList.remove('show') }, 1000)
   })
+})
+
+
+
+phoneInput.addEventListener('input', function (e) {
+  let pattern = "+7(___) ___-__-__" //маска
+  let i = 0 //счетчик для замены символов
+  let val = e.target.value.replace(/\D/g, "") //берем только числа
+  if (val.length < 2) val = "7" //если пробуем удалить последний символ
+  e.target.value = pattern.replace(/./g, (a) => /[_\d]/.test(a) && val.length > 0 ? val.charAt(i++) : i >= val.length ? "" : a) //заменяем символы в патерне
 })
