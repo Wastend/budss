@@ -12,10 +12,10 @@
 <body>
   <header class="header">
     <section class="header__top">
-      <button id="button__business" class="person__button active">
+      <button name="button__business" class="person__button active">
         For Business
       </button>
-      <button id="button__customers" class="person__button">
+      <button name="button__customers" class="person__button">
         For Customers
       </button>
     </section>
@@ -24,30 +24,56 @@
         <img src="./src/images/logo.svg" alt="logo">
         <h5 class="logo__text">budss</h5>
       </div>
-      <button name="button__contact" class="button__contact">Contact sales</button>
+      <button id="header__button_contact" name="button__contact" class="button__contact">Contact sales</button>
+      <div id="header__buttons_apps" class="header__buttons invisible">
+        <button>
+          <a href="https://play.google.com" target="_blank">
+            <img src="./src/images/icons/Google.png" alt="Google">
+          </a>
+        </button>
+        <button>
+          <a href="https://support.apple.com/ru-ru/apps" target="_blank">
+            <img src="./src/images/icons/Apple.png" alt="Apple">
+          </a>
+        </button>
+      </div>
       <button id="header__bands" class="header__bands">☰</button>
 
     </section>
   </header>
   <main>
     <section id="menu" class="menu">
-      <button id="menu__button_close" class="menu__button_close">x</button>
-      <button name="button__contact" class="button__contact">Contact sales</button>
+      <button id="menu__button_close" class="menu__button_close">
+        x
+      </button>
+      <button id="menu__button_contact" name="button__contact" class="button__contact">Contact sales</button>
+      <div id="menu__buttons_apps" class="header__buttons invisible">
+        <button>
+          <a href="https://play.google.com" target="_blank">
+            <img src="./src/images/icons/Google.png" alt="Google">
+          </a>
+        </button>
+        <button>
+          <a href="https://support.apple.com/ru-ru/apps" target="_blank">
+            <img src="./src/images/icons/Apple.png" alt="Apple">
+          </a>
+        </button>
+      </div>
       <ul class="menu__list">
         <li class="menu__item">
-          <a id="menu__link" class="menu__link" href="">For Business</a>
+          <a name="button__business" class="menu__link" href="#">For Business</a>
         </li>
         <li class="menu__item">
-          <a id="menu__link" class="menu__link" href="">For Customers</a>
+          <a name="button__customers" class="menu__link" href="#">For Customers</a>
         </li>
         <li class="menu__item">
-          <a id="menu__link" class="menu__link" href="">Privacy Policy</a>
+          <a class="menu__link" href="" target="_blank">Privacy Policy</a>
         </li>
         <li class="menu__item">
-          <a id="menu__link" class="menu__link" href="">Terms Of Use - Seller</a>
+          <a class="menu__link" href="" target="_blank">Terms Of Use - Seller</a>
         </li>
         <li class="menu__item">
-          <a id="menu__link" class="menu__link" href="">Terms Of Use - Sellers & Customers</a>
+          <a class="menu__link" href="" target="_blank">Terms Of Use - Sellers & Customers</a>
         </li>
       </ul>
     </section>
