@@ -25,6 +25,7 @@ const header__bottom = document.getElementById('header__bottom')
 const nameError = document.getElementById('nameError')
 const emailError = document.getElementById('emailError')
 const phoneError = document.getElementById('phoneError')
+const commonError = document.getElementById('commonError')
 const inputs = {
   'nameInput': [nameInput, nameError],
   'emailInput': [emailInput, emailError],
@@ -73,11 +74,14 @@ for (const element in inputs) {
     if (!e.target.value) {
       input.classList.add('error')
       error.innerHTML = 'This field is required.'
+      commonError.innerHTML = 'Please fill in all required fields'
     }
     else {
       input.classList.remove('error')
       error.innerHTML = ''
     }
+    if (!nameError.innerHTML && !emailError.innerHTML && !phoneError.innerHTML)
+      commonError.innerHTML = ''
     if (nameInput.value && emailInput.value && phoneInput.value)
       window__button.disabled = window__button.disabled == true && false
     else
