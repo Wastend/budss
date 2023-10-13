@@ -133,14 +133,14 @@ buttons__close.forEach(element => {
   })
 })
 
-document.addEventListener('scroll', function () {
+document.addEventListener('scroll', () => {
   if (
     (window.innerWidth > 768 && window.scrollY > 40) ||
     (window.innerWidth > 375 && window.scrollY > 30) ||
     (window.innerWidth > 320 && window.scrollY > 26)
   ) {
     header__bottom.classList.add('fixed')
-    start.style.marginTop = window.innerWidth >375 ? '3.8rem' : '5rem'
+    start.style.marginTop = window.innerWidth > 375 ? '3.8rem' : '5rem'
   }
   else {
     header__bottom.classList.remove('fixed')
@@ -172,7 +172,7 @@ cookie__buttons.forEach(element => {
 
 
 
-phoneInput.addEventListener('input', function (e) {
+phoneInput.addEventListener('input', (e) => {
   let pattern = "+7(___) ___-__-__" //маска
   let i = 0 //счетчик для замены символов
   let val = e.target.value.replace(/\D/g, "") //берем только числа
