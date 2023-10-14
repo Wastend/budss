@@ -118,12 +118,21 @@ for (const element in inputs) {
     }
     if (!nameError.innerHTML && !emailError.innerHTML && !phoneError.innerHTML)
       commonError.innerHTML = ''
-    if (nameInput.value && emailInput.value && phoneInput.value)
+    if (nameInput.value && emailInput.value && phoneInput.value.length > 16)
       window__button.disabled = window__button.disabled == true && false
     else
       window__button.disabled = true
   })
 }
+
+console.log(phoneInput.value);
+
+phoneInput.addEventListener('blur', (e) => {
+  if (e.target.value.length < 17) {
+    phoneInput.classList.add('error')
+    phoneError.innerHTML = 'Invalid phone number.'
+  }
+})
 
 buttons__close.forEach(element => {
   element.addEventListener('click', (e) => {
@@ -154,7 +163,7 @@ window__button.addEventListener('click', (e) => {
   e.preventDefault()
   nameInput.value = ''
   emailInput.value = ''
-  phoneInput.value = ''
+  phoneInput.value = '+7'
   companyInput.value = ''
   websiteInput.value = ''
   window__form.classList.remove('active')

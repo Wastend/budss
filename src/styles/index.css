@@ -27,63 +27,63 @@
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-Thin.woff2'),
-  url('../fonts/Outfit-Thin.woff');
+    url('../fonts/Outfit-Thin.woff');
   font-weight: 100;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-ExtraLight.woff2'),
-  url('../fonts/Outfit-ExtraLight.woff');
+    url('../fonts/Outfit-ExtraLight.woff');
   font-weight: 200;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-Light.woff2'),
-  url('../fonts/Outfit-Light.woff');
+    url('../fonts/Outfit-Light.woff');
   font-weight: 300;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-Regular.woff2'),
-  url('../fonts/Outfit-Regular.woff');
+    url('../fonts/Outfit-Regular.woff');
   font-weight: 400;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-Medium.woff2'),
-  url('../fonts/Outfit-Medium.woff');
+    url('../fonts/Outfit-Medium.woff');
   font-weight: 500;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-SemiBold.woff2'),
-  url('../fonts/Outfit-SemiBold.woff');
+    url('../fonts/Outfit-SemiBold.woff');
   font-weight: 600;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-Bold.woff2'),
-  url('../fonts/Outfit-Bold.woff');
+    url('../fonts/Outfit-Bold.woff');
   font-weight: 700;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-ExtraBold.woff2'),
-  url('../fonts/Outfit-ExtraBold.woff');
+    url('../fonts/Outfit-ExtraBold.woff');
   font-weight: 800;
 }
 
 @font-face {
   font-family: 'Outfit';
   src: url('../fonts/Outfit-Black.woff2'),
-  url('../fonts/Outfit-Black.woff');
+    url('../fonts/Outfit-Black.woff');
   font-weight: 900;
 }
 
@@ -221,22 +221,82 @@ main {
   background-color: var(--color-primary_01);
   border: 0;
   font-weight: 600;
-  transition: 0.4s;
   margin: 0.3rem 0;
   cursor: pointer;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
 }
 
 .button__contact_primary.invisible {
   display: none;
 }
 
-.button__contact_primary:hover {
+.button__contact_primary:hover,
+.button__contact_secondary:hover {
+  width: 9.5rem;
+  height: 3.2rem;
+}
+
+.cookie__buttons button:hover {
+  width: 6.5rem;
+  height: 3.1rem;
+}
+
+.button__contact_primary::before,
+.button__contact_secondary::before,
+.cookie__buttons button::before {
+  position: absolute;
+  content: attr(data-content);
+  bottom: 0%;
+  left: 0%;
+  width: 0;
+  height: 0;
+  width: 0%;
+  height: 0%;
+  border-radius: 0.8rem;
+  transition: 0.4s ease;
+}
+
+.button__contact_primary::before {
   background-color: var(--color-gray_01);
-  transition: 0.4s;
+}
+
+.button__contact_primary:focus::before {
+  background-color: var(--color-primary_01);
+}
+
+.button__contact_secondary::before {
+  background-color: var(--color-primary_04);
+}
+
+.button__contact_secondary:focus:before {
+  background-color: var(--color-gray_01);
+}
+
+.cookie__buttons button:nth-child(2)::before {
+  background-color: var(--color-gray_06);
+}
+
+.cookie__buttons button:nth-child(2):focus:before {
+  background-color: var(--color-gray_05);
+}
+
+.button__contact_text {
+  position: relative;
+}
+.cookie__buttons button:nth-child(2) .button__contact_text {
+  color: var(--color-gray_00);
+}
+
+.button__contact_primary:hover::before,
+.button__contact_secondary:hover::before,
+.cookie__buttons button:hover::before {
+  width: 110%;
+  height: 110%;
 }
 
 .button__contact_primary:focus {
-  background-color: var(--color-primary_01);
   border: 0.2rem solid var(--color-primary_03);
   transition: 0.4s;
 }
@@ -250,11 +310,6 @@ main {
   background-color: var(--color-gray_03);
 }
 
-.contacts .button__contact_primary:hover,
-.window .button__contact_primary:hover {
-  border: 0.1rem solid var(--color-primary_01);
-}
-
 .button__contact_secondary {
   width: 9rem;
   height: 3rem;
@@ -265,16 +320,12 @@ main {
   transition: 0.4s;
   margin: 0.3rem 0;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
 }
 
 .button__contact_secondary.invisible {
   display: none;
-}
-
-.button__contact_secondary:hover {
-  background-color: var(--color-primary_04);
-  border: 0.1rem solid var(--color-primary_01);
-  transition: 0.4s;
 }
 
 .button__contact_secondary:focus {
@@ -292,6 +343,26 @@ main {
 .button__contact_secondary:disabled {
   background-color: var(--color-gray_01);
   border: 0.1rem solid var(--color-gray_03);
+}
+
+.cookie__buttons button {
+  width: 6.2rem;
+  height: 3rem;
+  position: relative;
+}
+
+.cookie__buttons button:nth-child(2) {
+  background-color: var(--color-gray_07);
+  border: 2px solid var(--color-primary_01);
+  border-radius: 0.8rem;
+  font-weight: bold;
+  cursor: pointer;
+  align-self: center;
+  transition: 0.4s;
+}
+
+.cookie__buttons button:nth-child(2):hover {
+  border: 0;
 }
 
 /* */
@@ -1043,27 +1114,6 @@ main {
   gap: 1rem;
 }
 
-.cookie__buttons button {
-  width: 6.2rem;
-  height: 3rem;
-}
-
-.cookie__buttons button:nth-child(2) {
-  background-color: var(--color-gray_07);
-  color: var(--color-gray_00);
-  border: 2px solid var(--color-primary_01);
-  border-radius: 0.8rem;
-  font-weight: bold;
-  cursor: pointer;
-  align-self: center;
-  transition: 0.4s;
-}
-
-.cookie__buttons button:nth-child(2):hover {
-  background-color: var(--color-gray_06);
-  transition: 0.4s;
-}
-
 .cookie .window__close {
   width: 1.2rem;
   height: 1.2rem;
@@ -1110,6 +1160,33 @@ main {
     transform: translateY(100vh);
   }
 }
+
+@keyframes show__hover {
+  to {
+    background-size: 100% 100%;
+  }
+}
+
+/* @keyframes showHoverBg_secondary {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+
+@keyframes closeHoverBg {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+} */
 
 @media(min-width: 1920px) {
   main {
