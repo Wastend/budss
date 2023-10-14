@@ -118,14 +118,16 @@ for (const element in inputs) {
     }
     if (!nameError.innerHTML && !emailError.innerHTML && !phoneError.innerHTML)
       commonError.innerHTML = ''
-    if (nameInput.value && emailInput.value && phoneInput.value.length > 16)
-      window__button.disabled = window__button.disabled == true && false
-    else
+    if (nameInput.value && emailInput.value && phoneInput.value.length > 16) {
+      window__button.disabled = false
+      window__button.classList.remove('disable')
+    }
+    else{
       window__button.disabled = true
+      window__button.classList.add('disable')
+    }
   })
 }
-
-console.log(phoneInput.value);
 
 phoneInput.addEventListener('blur', (e) => {
   if (e.target.value.length < 17) {
@@ -156,8 +158,6 @@ document.addEventListener('scroll', () => {
     start.style.marginTop = '0'
   }
 })
-
-
 
 window__button.addEventListener('click', (e) => {
   e.preventDefault()

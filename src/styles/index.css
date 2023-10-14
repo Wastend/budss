@@ -171,6 +171,10 @@ main {
 }
 
 /* buttons */
+button:disabled {
+  cursor: auto;
+}
+
 /*person */
 .person__button {
   width: 8.5rem;
@@ -232,8 +236,8 @@ main {
   display: none;
 }
 
-.button__contact_primary:hover,
-.button__contact_secondary:hover {
+.button__contact_primary:not([disabled]):not(.cookie__buttons button):hover,
+.button__contact_secondary:not([disabled]):hover {
   width: 9.5rem;
   height: 3.2rem;
 }
@@ -285,6 +289,7 @@ main {
 .button__contact_text {
   position: relative;
 }
+
 .cookie__buttons button:nth-child(2) .button__contact_text {
   color: var(--color-gray_00);
 }
@@ -294,6 +299,13 @@ main {
 .cookie__buttons button:hover::before {
   width: 110%;
   height: 110%;
+}
+
+.button__contact_primary:disabled::before,
+.button__contact_secondary:disabled::before,
+.cookie__buttons button:disabled::before {
+  width: 0%;
+  height: 0%;
 }
 
 .button__contact_primary:focus {
@@ -345,6 +357,10 @@ main {
   border: 0.1rem solid var(--color-gray_03);
 }
 
+.button__contact_secondary:disabled .button__contact_text {
+  color: var(--color-gray_03);
+}
+
 .cookie__buttons button {
   width: 6.2rem;
   height: 3rem;
@@ -359,10 +375,7 @@ main {
   cursor: pointer;
   align-self: center;
   transition: 0.4s;
-}
-
-.cookie__buttons button:nth-child(2):hover {
-  border: 0;
+  overflow: hidden;
 }
 
 /* */
@@ -653,6 +666,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
   gap: 3.5rem;
   margin-top: 5rem;
 }
@@ -1167,26 +1181,22 @@ main {
   }
 }
 
-/* @keyframes showHoverBg_secondary {
-  from {
-    transform: translateY(0);
+@media(min-width: 2000px) {
+
+  .header__top {
+    padding: 0 10vw;
   }
 
-  to {
-    transform: translateY(100vh);
+  .header__bottom {
+    align-self: center;
+    padding: 0;
+    width: calc(100% - 20vw);
+  }
+
+  .footer {
+    width: 100%;
   }
 }
-
-
-@keyframes closeHoverBg {
-  from {
-    transform: translateY(0);
-  }
-
-  to {
-    transform: translateY(100vh);
-  }
-} */
 
 @media(min-width: 1920px) {
   main {
@@ -1195,7 +1205,6 @@ main {
 
   .header {
     align-self: center;
-    max-width: 1920px;
     width: 100%;
   }
 
@@ -1206,7 +1215,6 @@ main {
   .footer {
     align-self: center;
     max-width: 1920px;
-    width: 100%;
   }
 }
 
