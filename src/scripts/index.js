@@ -42,39 +42,55 @@ const inputs = {
 const cookie = document.getElementById('cookie')
 const cookie__buttons = document.getElementsByName('cookie__button')
 
-
-header__buttons.forEach(elements => {
-  Array.from(elements).forEach(el => {
-    el.addEventListener('click', (e) => {
-      e.preventDefault()
-      if (el.classList.contains('button__business')) {
-        !button__business[0].classList.contains('active') && button__business[0].classList.add('active')
-        button__customers[0].classList.remove('active')
-        if (window.innerWidth > 375) {
-          header__button_contact.classList.remove('invisible')
-          header__links_apps.classList.add('invisible')
-        }
-        else {
-          menu__button_contact.classList.remove('invisible')
-          menu__links_apps.classList.add('invisible')
-        }
-      }
-      else {
-        !button__customers[0].classList.contains('active') && button__customers[0].classList.add('active')
-        button__business[0].classList.remove('active')
-        if (window.innerWidth > 375) {
-          header__button_contact.classList.add('invisible')
-          header__links_apps.classList.remove('invisible')
-        }
-        else {
-          menu__button_contact.classList.add('invisible')
-          menu__links_apps.classList.remove('invisible')
-        }
-      }
-    })
+if (button__business[0].classList.contains('active')){
+  if (window.innerWidth > 375) {
+    header__links_apps.classList.add('invisible')
   }
-  )
-})
+  else {
+    menu__links_apps.classList.add('invisible')
+  }
+}
+else {
+  if (window.innerWidth > 375) {
+    header__button_contact.classList.add('invisible')
+  }
+  else {
+    menu__button_contact.classList.add('invisible')
+  }
+}
+
+  header__buttons.forEach(elements => {
+    Array.from(elements).forEach(el => {
+      el.addEventListener('click', (e) => {
+        e.preventDefault()
+        if (el.classList.contains('button__business')) {
+          !button__business[0].classList.contains('active') && button__business[0].classList.add('active')
+          button__customers[0].classList.remove('active')
+          if (window.innerWidth > 375) {
+            header__button_contact.classList.remove('invisible')
+            header__links_apps.classList.add('invisible')
+          }
+          else {
+            menu__button_contact.classList.remove('invisible')
+            menu__links_apps.classList.add('invisible')
+          }
+        }
+        else {
+          !button__customers[0].classList.contains('active') && button__customers[0].classList.add('active')
+          button__business[0].classList.remove('active')
+          if (window.innerWidth > 375) {
+            header__button_contact.classList.add('invisible')
+            header__links_apps.classList.remove('invisible')
+          }
+          else {
+            menu__button_contact.classList.add('invisible')
+            menu__links_apps.classList.remove('invisible')
+          }
+        }
+      })
+    }
+    )
+  })
 
 menu__buttons.forEach(element => {
   element.addEventListener('click', (e) => {
@@ -118,21 +134,36 @@ for (const element in inputs) {
     }
     if (!nameError.innerHTML && !emailError.innerHTML && !phoneError.innerHTML)
       commonError.innerHTML = ''
-    if (nameInput.value && emailInput.value && phoneInput.value.length > 16) {
+    if (nameInput.value && emailInput.checkValidity() && phoneInput.value.length > 16) {
       window__button.disabled = false
-      window__button.classList.remove('disable')
     }
-    else{
+    else {
       window__button.disabled = true
-      window__button.classList.add('disable')
     }
   })
 }
+
+nameInput.addEventListener('blur', (e) => {
+  if(e.target.value.length == 0) {
+    nameError.classList.add('error')
+    nameError.innerHTML = 'This field is required.'
+    commonError.innerHTML = 'Please fill in all required fields'
+  }
+})
+
+emailInput.addEventListener('blur', (e) => {
+  if(!e.target.checkValidity()) {
+    emailError.classList.add('error')
+    emailError.innerHTML = 'Invalid email'
+    commonError.innerHTML = 'Please fill in all required fields'
+  }
+})
 
 phoneInput.addEventListener('blur', (e) => {
   if (e.target.value.length < 17) {
     phoneInput.classList.add('error')
     phoneError.innerHTML = 'Invalid phone number.'
+    commonError.innerHTML = 'Please fill in all required fields'
   }
 })
 

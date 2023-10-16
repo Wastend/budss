@@ -193,6 +193,7 @@ button:disabled {
 
 .person__button:hover {
   background-color: var(--color-additional_01);
+  border-radius: 1rem 1rem 0 0;
 }
 
 .person__button:active {
@@ -206,7 +207,7 @@ button:disabled {
 }
 
 .person__button.active:hover {
-  background-color: var(--color-gray_02);
+  cursor: auto;
 }
 
 .person__button.active:active {
@@ -435,10 +436,10 @@ button:disabled {
   content: '';
   position: absolute;
   left: 44%;
-  top: 50%;
+  top: 65%;
   transform: translate(-50%, -50%);
   border: 1px solid var(--color-gray_02);
-  transform: rotate(90deg);
+  rotate: 90deg;
   width: 1rem;
 }
 
@@ -537,7 +538,7 @@ button:disabled {
   width: 82%;
   height: 2rem;
   background-color: var(--color-primary_01);
-  rotate: -0.5deg;
+  rotate: -1.5deg;
   z-index: -1;
   border-radius: 1.5rem;
 }
@@ -697,7 +698,7 @@ button:disabled {
   width: 59%;
   height: 2rem;
   background-color: var(--color-primary_01);
-  rotate: -0.5deg;
+  rotate: -2deg;
   z-index: -1;
   border-radius: 1.5rem;
 }
@@ -1367,12 +1368,12 @@ button:disabled {
   }
 
   .about__description_text {
-    width: 13rem;
+    width: 14rem;
   }
 
   .about__description_text::before {
     left: 1.8rem;
-    width: 90%;
+    width: 85%;
     height: 1.4rem;
   }
 
@@ -1418,7 +1419,7 @@ button:disabled {
   }
 
   .advance__description::before {
-    left: 4.6rem;
+    left: 7.5rem;
     width: 12.8rem;
     height: 1.4rem;
   }
@@ -1544,12 +1545,12 @@ button:disabled {
   }
 
   .about__description_text {
-    width: 11rem;
+    width: 15rem;
   }
 
   .about__description_text::before {
     left: -0.2rem;
-    width: 104%;
+    width: 80%;
   }
 
   .contacts__text {
@@ -1694,6 +1695,11 @@ button:disabled {
 
   .menu__item {
     list-style-type: none;
+  }
+
+  .menu__link {
+    background-color: transparent;
+    border: 0;
   }
 
   .start {
